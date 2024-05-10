@@ -18,7 +18,7 @@ const server = http.createServer(async (req, res) => {
   if (reqPath === "/" && reqMethod === "GET") {
     res.writeHead("200", {
       "Content-Type": "application/json",
-      /* "Access-Control-Allow-Origin": req.headers.origin, */
+      "Access-Control-Allow-Origin": '*',
     });
     const jsonFile = path.resolve(__dirname, "reserved.json");
     const jsonFileData = fs.readFileSync(jsonFile, "utf-8");
@@ -27,7 +27,7 @@ const server = http.createServer(async (req, res) => {
   } else if (reqPath === "/" && reqMethod === "POST") {
     res.writeHead("200", {
       "Content-Type": "application/json",
-      /* "Access-Control-Allow-Origin": req.headers.origin, */
+      "Access-Control-Allow-Origin": '*',
     });
     const fileDir = path.resolve(__dirname, "reserved.json");
     const newObj = JSON.parse(body);
@@ -42,7 +42,7 @@ const server = http.createServer(async (req, res) => {
   } else if (reqPath === "/deleteSlot" && reqMethod === "POST") {
     res.writeHead("200", {
       "Content-Type": "application/json",
-      /* "Access-Control-Allow-Origin": req.headers.origin, */
+      "Access-Control-Allow-Origin": '*',
     });
     const fileDir = path.resolve(__dirname, "reserved.json");
     const overall = fs.readFileSync(fileDir, "utf8");
@@ -57,7 +57,7 @@ const server = http.createServer(async (req, res) => {
   } else {
     res.setHeader("404", {
       "Content-Type": "application/json",
-      /* "Access-Control-Allow-Origin": req.headers.origin, */
+      "Access-Control-Allow-Origin": '*',
     });
     res.write('{"error":"Not FOUND"}"');
     return res.end();
